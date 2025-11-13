@@ -70,7 +70,7 @@
 		</data>
 		<key>Resources/WebUI/index.html</key>
 		<data>
-		uSbCcKTT3AwACo7DQv0hk/C5X3c=
+		F8f88EEsGyWWcjhD9f7voYpjPzc=
 		</data>
 		<key>Resources/WebUI/start.html</key>
 		<data>
@@ -100,10 +100,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			mK+xcCXkeZq1GItcQbj+Td4uj6g=
+			EJ2ZRX0WKaCnfxEuT8vuLGZ1OH8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"98afb17025e4799ab5188b5c41b8fe4dde2e8fa8"</string>
+			<string>cdhash H"109d99457d1629a0a77f112e4fcbee2c6675387f" or cdhash H"24a2df0e6aabdbd96b79da77e3cea393a68b70c7"</string>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
@@ -221,7 +221,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uHPI+v0eEfy4VcNLh03p98KuXJlYH0wmZQBk1YpfcA4=
+			ns+W2JcON+1UhXAQLC96FllzfiyLLSQzkyowBDFaCYI=
 			</data>
 		</dict>
 		<key>Resources/WebUI/start.html</key>
@@ -254,67 +254,102 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Support/Llama.cpp/LICENSE</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5WKi3fr4KAU3eVrF7NNOMBK2WCoUfvabpqalwIyEdX0=
+			</data>
+		</dict>
+		<key>Support/Llama.cpp/LICENSE-curl</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VUZ9MjwuPeTrh6s0V5myXm8JZ6jPrgtw82wqQsDPyTE=
+			</data>
+		</dict>
+		<key>Support/Llama.cpp/LICENSE-httplib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+MU5UUOFRbjtYRdtkHG9EDnoFQL57JWQuFzNXHGghHM=
+			</data>
+		</dict>
+		<key>Support/Llama.cpp/LICENSE-jsonhpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wNBoOS6mU1i3mLjBZRA1YPBunjs4xKtOLYgQp7kxr4Y=
+			</data>
+		</dict>
+		<key>Support/Llama.cpp/LICENSE-linenoise</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IRNYpCImLvrL1GGBVNl6suKK6hUmWq6/HVj/s6d1sa8=
+			</data>
+		</dict>
 		<key>Support/Llama.cpp/libggml-base.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e3YsxWzC3U5cxZqcgQZjytWl2tlJy5lemc7NKXNn08I=
+			1PO1feYAY7Cpholg1XlYcXRE2Fm9Qrn3qjgcUZc7ZWw=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-blas.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uhuls69mIra4m9Ws/zgfZy9rMEilUC11l7xCH+mAg00=
+			dYfBJ0FOBbuEsOtELQLouOv3lK2F/o6IlZ06g8AxKOM=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-cpu.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4AdE1Bup9jvgepj43u3sLrFCfF0cE8wqw8mq8mTBfbE=
+			P0PhU38Uaz96GWFjZD5KE+acXxkINQo/MO704FEKWBY=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-metal.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vFcxy4lxsAVSXvxP57ziIJ3f8XOwblVKpVssDjIDL24=
+			kfXi2iYsqhlrh389MwEAAQSQGwnZTT3UpjAkVNtz+pQ=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-rpc.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G44XgJCwyar0n3BnIf3Q2+0gOsfoR+AcfmGhK0OJzb8=
+			9YStS162bvOZGWtBmvK6qwe8kDOCI8we6GUnE7uOh9k=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7yyA2x4p2CQfGBSC95GYFokEaIw8c2YmIbrA1Dw0Lf0=
+			uwDops3+KGi+9acQiMyIgEyFMmW8vfdlu0PpMCZW+f0=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libllama.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/ZBDvXkPrELwR3qyMcCmFX8hhuR6gAu9duTOlDwE+ao=
+			e+RisMw8AwYTwwSUHTWCN2CJ0L2l1igZLjTgON6G0H4=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libmtmd.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dLlJEE3pwkZJXbZ6AE52PkdKwZsWVYB3t38W7rg+Os8=
+			FIYiLKWwKi07wtx5GM0smZ2mt6G10VVOp5N7Y4dd0Yg=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/llama-server</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A5pxmHR8PuabdA577VsgllGQtxVkRChOpoubOd8cltQ=
+			1eM0JjsXLsbjsuxE8l+w0HUBhjNUB3Xu5n73WcOWnNA=
 			</data>
 		</dict>
 	</dict>
