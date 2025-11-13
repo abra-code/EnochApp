@@ -34,7 +34,7 @@
 		</data>
 		<key>Resources/Credits.rtf</key>
 		<data>
-		hob2oW6ek2PX1BcexxL4nqaRFZw=
+		W9ST3dO2WMxkWDpfTqA6DtK6lg4=
 		</data>
 		<key>Resources/Enoch.icns</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Resources/Scripts/webkit.client.js</key>
 		<data>
-		JIilhc4o0lGMCNk+KF5+h/7IbpA=
+		9D0qZtosTPfH8t7fAGGDYg1XGq0=
 		</data>
 		<key>Resources/WebUI/enoch-book.png</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Resources/WebUI/index.html</key>
 		<data>
-		PxfJLnBJOUh7+D61hFsv7dlKB+I=
+		uSbCcKTT3AwACo7DQv0hk/C5X3c=
 		</data>
 		<key>Resources/WebUI/start.html</key>
 		<data>
@@ -88,7 +88,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UuKHkw8fDZizhIOTIKi497c2uCs=
+			BkGKDxkOEfv0hxbTgqwl4VrWQjM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -100,10 +100,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			qRsfBUzjZaJczrulJVDQ95wAh68=
+			mK+xcCXkeZq1GItcQbj+Td4uj6g=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.abracode.Enoch" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = T9NM2ZLDTY</string>
+			<string>cdhash H"98afb17025e4799ab5188b5c41b8fe4dde2e8fa8"</string>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
@@ -158,7 +158,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			B5feS/OHop9WSne6FMkuvovknyxXwvFO08z7TyiYEPA=
+			cCLevpA2FEqLeVJIYj4itfX4hDLsraUpqbNMoryorLI=
 			</data>
 		</dict>
 		<key>Resources/Enoch.icns</key>
@@ -207,7 +207,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			U+icAHEtBnnNrVJ0hxvsdY4GRZkCqfLhbl4iSUywgTU=
+			zzlV9MQUqE9m9nwuFTbnzqRfP3Ydk87FoIFTZA5WURQ=
 			</data>
 		</dict>
 		<key>Resources/WebUI/enoch-book.png</key>
@@ -221,7 +221,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gHSpf4OywhRfPyqAWE2pwCSWqVTlhg0OVqaFE4dc70Q=
+			uHPI+v0eEfy4VcNLh03p98KuXJlYH0wmZQBk1YpfcA4=
 			</data>
 		</dict>
 		<key>Resources/WebUI/start.html</key>
@@ -249,7 +249,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zFOurCvCZWPm6cDFWZnIrj8xar98xSaBiGDKrCgikug=
+			GKuqXgZwTT62+/UhoNKL6Xb42Rb04u38bVqZHzn4or8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -258,63 +258,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GEHsItMN4WkMtT5it5osEGJEMoZp5s8vOjGqAtJLeJA=
+			e3YsxWzC3U5cxZqcgQZjytWl2tlJy5lemc7NKXNn08I=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-blas.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			m/1rWco94apOZj6ttQkWboxW2I55rdFdaMJhb530QsI=
+			uhuls69mIra4m9Ws/zgfZy9rMEilUC11l7xCH+mAg00=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-cpu.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ijm9jtDjIepAZs0P9aUgk64+81YrtEipbn37g3rJ1o4=
+			4AdE1Bup9jvgepj43u3sLrFCfF0cE8wqw8mq8mTBfbE=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-metal.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qpC5Qt+U51aOfszXVwK14fw+Z2RPjsCUNImLqyqwFoM=
+			vFcxy4lxsAVSXvxP57ziIJ3f8XOwblVKpVssDjIDL24=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml-rpc.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/XBuuv4ittbH9vmuHbNI3DQuJs+eIi8xpQdZtuFn31g=
+			G44XgJCwyar0n3BnIf3Q2+0gOsfoR+AcfmGhK0OJzb8=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libggml.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DlS3nKaERgRZ/uTn8w+hejn4qye+b+sDuYVcAssC9c8=
+			7yyA2x4p2CQfGBSC95GYFokEaIw8c2YmIbrA1Dw0Lf0=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libllama.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ifb37T4UAL5yfwhGJygQuNYezNk3QpScgGAbXOC8FB8=
+			/ZBDvXkPrELwR3qyMcCmFX8hhuR6gAu9duTOlDwE+ao=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/libmtmd.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JGnk9chi8g/mFsmRHbM9VwugNGSSW2oitkIDWhUNPh4=
+			dLlJEE3pwkZJXbZ6AE52PkdKwZsWVYB3t38W7rg+Os8=
 			</data>
 		</dict>
 		<key>Support/Llama.cpp/llama-server</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iAlS2T9sgFRQwLfg/qJKxmY5Bkr3ITSROpmag+nUBQY=
+			A5pxmHR8PuabdA577VsgllGQtxVkRChOpoubOd8cltQ=
 			</data>
 		</dict>
 	</dict>
