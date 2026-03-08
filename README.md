@@ -1,4 +1,6 @@
-# EnochApp
+# Enoch.app
+![Enoch Icon](Icon/Enoch-book.png)
+
 Enoch.app - macOS applet to run Enoch large language model locally
 <br>
 Enoch.app is a specialization of [AIChat.app](https://github.com/abra-code/AIChatApp/) with embedded Enoch LLM file in gguf format.
