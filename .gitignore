@@ -26,3 +26,5 @@ LLama.cpp/
 *.dSYM.zip
 *.dSYM
 Enoch.app/Contents/_CodeSignature
+Enoch.app/Contents/Resources/WebUI/bundle.css
+Enoch.app/Contents/Resources/WebUI/bundle.js
