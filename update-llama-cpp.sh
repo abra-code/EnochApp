@@ -12,6 +12,7 @@ RESET=$(printf '\033[0m')
 
 VERSION="auto"
 ARCH="auto"
+SIGNING_IDENTITY="-"
 
 # Set by prepare()
 ASSET_NAME=""
@@ -52,6 +53,7 @@ from the directory containing this script.
 Options:
   --version=VERSION   llama.cpp build tag to install (e.g. b8797, default: auto-detect latest)
   --arch=ARCH         Architecture: arm64 or x86_64 (default: auto-detect from host)
+  --identity=CERT     Signing identity for codesign (default: - for ad-hoc)
   --help              Show this help message
 
 Examples:
@@ -69,6 +71,8 @@ while [ $# -gt 0 ]; do
         --version) shift; VERSION="$1" ;;
         --arch=*) ARCH="${1#*=}" ;;
         --arch) shift; ARCH="$1" ;;
+        --identity=*) SIGNING_IDENTITY="${1#*=}" ;;
+        --identity) shift; SIGNING_IDENTITY="$1" ;;
         *) echo "Unknown option: $1"; show_help ;;
     esac
     shift
@@ -142,7 +146,11 @@ prepare() {
     esac
 
     if [ ! -d "$INSTALL_DIR" ]; then
-        echo "Install directory not found: $INSTALL_DIR"
+    	/bin/mkdir -vp "$INSTALL_DIR"
+	fi
+	
+    if [ ! -d "$INSTALL_DIR" ]; then
+        echo "Install directory not found and could not be created: $INSTALL_DIR"
         echo "Expected path: $INSTALL_DIR"
         exit 1
     fi
@@ -214,15 +222,8 @@ extract_and_install() {
     echo "==== Installing into $INSTALL_DIR ===="
     echo
 
-    # Back up the current install in case we need to roll back
-    local backup_dir="${INSTALL_DIR}.backup"
-    echo "  Backing up current install to $(basename "$backup_dir")..."
-    /bin/rm -rf "$backup_dir"
-    /bin/cp -R "$INSTALL_DIR" "$backup_dir"
-    echo
-
     # Remove existing dylibs and LICENSE files so stale files from prior versions
-    # don't linger. The backup above already preserves the previous state.
+    # don't linger.
     # Use [ -e ] || [ -L ] to catch both valid files/symlinks and dangling symlinks
     # ([ -e ] follows symlinks, so it returns false if the target no longer exists).
     echo "  Removing existing dylibs..."
@@ -316,6 +317,25 @@ EOF
     echo
 }
 
+codesign_app() {
+    echo "==== Codesigning app bundle ===="
+    echo
+
+    local codesign_script="$SCRIPT_DIR/codesign_applet.sh"
+    if [ ! -f "$codesign_script" ]; then
+        echo "${RED}codesign_applet.sh not found at $codesign_script${RESET}"
+        exit 1
+    fi
+
+    "$codesign_script" "$APP_BUNDLE" "$SIGNING_IDENTITY"
+    local result=$?
+    if [ "$result" != 0 ]; then
+        echo "${RED}Codesigning failed (exit $result)${RESET}"
+        exit 1
+    fi
+    echo
+}
+
 verify_install() {
     echo "==== Verifying installation ===="
     echo
@@ -335,7 +355,6 @@ verify_install() {
     version_out=$("$server_path" --version 2>&1 | head -1 || echo "")
     if [ -z "$version_out" ]; then
         echo "${RED}llama-server --version produced no output — dylib issue?${RESET}"
-        echo "  Backup preserved at: ${INSTALL_DIR}.backup"
         exit 1
     fi
     echo "  Version: $version_out"
@@ -347,7 +366,6 @@ verify_install() {
     local help_result=$?
     if [ "$help_result" != 0 ]; then
         echo "${RED}llama-server --help exited with code $help_result — possible dylib load failure${RESET}"
-        echo "  Backup preserved at: ${INSTALL_DIR}.backup"
         exit 1
     fi
 
@@ -374,6 +392,8 @@ verify_webui_patches() {
         while [ "${replacement%\\}" != "$replacement" ]; do
             replacement="${replacement%\\}"
         done
+        # Strip sed backreferences (\1, \2, …) — they are not literal strings
+        replacement=$(printf '%s' "$replacement" | /usr/bin/sed 's/\\[0-9]//g')
         [ -z "$replacement" ] && continue
         /usr/bin/grep -qFe "$replacement" "$patched_file" || {
             echo "    ${RED}MISSING: $replacement${RESET}"
@@ -397,12 +417,27 @@ update_webui() {
         return 1
     fi
 
-    local base_url="https://raw.githubusercontent.com/ggml-org/llama.cpp/${VERSION}/tools/server/public"
     local webui_work="$WORK_DIR/webui"
     /bin/mkdir -p "$webui_work"
 
-    # Download the three WebUI files at the same tag as the llama.cpp binary
-    echo "  Downloading WebUI files at $VERSION..."
+    # Resolve which HF version to use. The UI files are published to the HF
+    # bucket by a separate CI job that may lag behind or break (e.g. when the
+    # repo renames internal paths). Probe the version-specific tag first; if
+    # absent, fall back to the "latest" pointer which always tracks the last
+    # successful publish.
+    local hf_version="$VERSION"
+    local probe_code
+    probe_code=$(/usr/bin/curl -s -o /dev/null -w "%{http_code}" --max-time 10 --max-redirs 5 \
+        "https://huggingface.co/buckets/ggml-org/llama-ui/resolve/${VERSION}/checksums.txt" 2>/dev/null)
+    if [ "$probe_code" != "200" ] && [ "$probe_code" != "302" ]; then
+        echo "  ${RED}WebUI for ${VERSION} not in HF bucket (HTTP ${probe_code}) — falling back to latest${RESET}"
+        hf_version="latest"
+    fi
+
+    local base_url="https://huggingface.co/buckets/ggml-org/llama-ui/resolve/${hf_version}"
+
+    # Download the three WebUI files
+    echo "  Downloading WebUI files (${hf_version})..."
     local download_ok="yes"
     for f in index.html bundle.js bundle.css; do
         printf "    %-12s" "$f"
@@ -516,10 +551,6 @@ print_summary() {
     echo "  llama.cpp $VERSION ($ARCH) installed to:"
     echo "  $INSTALL_DIR"
     echo
-    echo "  Previous install backed up at:"
-    echo "  ${INSTALL_DIR}.backup"
-    echo
-
     echo "  WebUI ($VERSION):"
     case "$WEBUI_STATUS" in
         ok)
@@ -544,8 +575,9 @@ main() {
     prepare
     download_release
     extract_and_install
-    verify_install
     update_webui
+    codesign_app
+    verify_install
     cleanup
     print_summary
 }

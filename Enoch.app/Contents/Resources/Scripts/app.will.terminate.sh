@@ -9,22 +9,23 @@ echo "Stop our servers and orphaned servers without host app running"
 host_pids=$("$plister" get keys "$prefs" "/server-hosts")
 while read -r host_pid; do
     echo "registered host_pid = $host_pid"
-    # check if the registered host is our app 
+    # check if the registered host is our app
     if [ "$host_pid" = "$OMC_FRONT_PROCESS_ID" ]; then
     	echo "host_pid = $host_pid is our app. Stop all servers we started"
     	server_pids=$("$plister" get keys "$prefs" "/server-hosts/$host_pid")
-    	
+
     	while read -r server_pid; do
     		if [ -n "$server_pid" ]; then
 				/bin/ps -p "$server_pid"
 				server_process_exists=$?
 				if [ "$server_process_exists" = 0 ]; then
 					echo "kill -TERM $server_pid"
-					kill -TERM "$server_pid"  					
+					kill -TERM "$server_pid"
 				fi
+				"$plister" delete "$prefs" "/server-info/$server_pid" 2>/dev/null
     		fi
 		done <<< "$server_pids"
-		
+
 		"$plister" delete "$prefs" "/server-hosts/$host_pid"
     elif [ -n "$host_pid" ]; then
     	# not our app, check if the host process exists
@@ -40,8 +41,9 @@ while read -r host_pid; do
     				server_process_exists=$?
     				if [ "$server_process_exists" = 0 ]; then
 						echo "kill -TERM $server_pid"
-						kill -TERM "$server_pid"  					
+						kill -TERM "$server_pid"
     				fi
+					"$plister" delete "$prefs" "/server-info/$server_pid" 2>/dev/null
     			fi
 			done <<< "$server_pids"
 			"$plister" delete "$prefs" "/server-hosts/$host_pid"
